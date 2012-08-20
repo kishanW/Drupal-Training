@@ -14,9 +14,13 @@ function site_address_menu() {
 }
 
 function site_address_form() {
-
   $form = array();
 
-  return $form;
+  $form['street'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Street'), 
+    '#required' => TRUE,
+  );
 
+  return $form;
 }
