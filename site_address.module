@@ -44,3 +44,12 @@ function site_address_form() {
 
   return system_settings_form($form);
 }
+
+function site_address_block_info() {
+  $blocks = array();
+
+  $blocks['site_address'] = array(
+    'info' => t('Site Address')
+  );
+  return $blocks;
+}
