@@ -1,2 +1,22 @@
 <?php
 
+/**
+ * Implements hook_menu().
+ */
+function site_address_menu() {
+  $items['admin/config/site_address'] = array(
+    'title' => 'Site Address', 
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('site_address_form'),
+    'access arguments' => array('access content')
+  );
+  return $items;
+}
+
+function site_address_form() {
+
+  $form = array();
+
+  return $form;
+
+}
