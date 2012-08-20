@@ -21,6 +21,23 @@ function site_address_form() {
     '#title' => t('Street'), 
     '#required' => TRUE,
   );
-
+  $form['city'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('City'), 
+    '#required' => TRUE,
+  );
+  /**
+  * The State field
+  */
+  $form['state'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('State'), 
+    '#required' => TRUE,
+  );
+  $form['zip'] = array(
+    '#type' => 'textfield', 
+    '#title' => t('Zip Code'), 
+    '#required' => TRUE,
+  );
   return $form;
 }
