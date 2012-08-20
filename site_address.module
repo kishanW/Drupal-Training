@@ -1,13 +1,19 @@
 <?php
 
+define('SITE_ADDRESS_PATH', 'admin/config/site_address');
+
 /**
  * Implements hook_menu().
  */
 function site_address_menu() {
-  $items['admin/config/site_address'] = array(
+  $items[SITE_ADDRESS_PATH] = array(
     'title' => 'Site Address', 
     'page callback' => 'drupal_get_form',
     'page arguments' => array('site_address_form'),
+    'access arguments' => array('edit site address')
+  );
+  $items[SITE_ADDRESS_PATH . 'ajax'] = array(
+    'page callback' => 'site_address_ajax_states',
     'access arguments' => array('edit site address')
   );
   return $items;
@@ -25,6 +31,65 @@ function site_address_permission() {
   );
 }
 
+function site_address_ajax_states( $string ) {
+  
+  $states = array(
+    'AL'=>"Alabama",  
+      'AK'=>"Alaska",  
+      'AZ'=>"Arizona",  
+      'AR'=>"Arkansas",  
+      'CA'=>"California",  
+      'CO'=>"Colorado",  
+      'CT'=>"Connecticut",  
+      'DE'=>"Delaware",  
+      'DC'=>"District Of Columbia",  
+      'FL'=>"Florida",  
+      'GA'=>"Georgia",  
+      'HI'=>"Hawaii",  
+      'ID'=>"Idaho",  
+      'IL'=>"Illinois",  
+      'IN'=>"Indiana",  
+      'IA'=>"Iowa",  
+      'KS'=>"Kansas",  
+      'KY'=>"Kentucky",  
+      'LA'=>"Louisiana",  
+      'ME'=>"Maine",  
+      'MD'=>"Maryland",  
+      'MA'=>"Massachusetts",  
+      'MI'=>"Michigan",  
+      'MN'=>"Minnesota",  
+      'MS'=>"Mississippi",  
+      'MO'=>"Missouri",  
+      'MT'=>"Montana",
+      'NE'=>"Nebraska",
+      'NV'=>"Nevada",
+      'NH'=>"New Hampshire",
+      'NJ'=>"New Jersey",
+      'NM'=>"New Mexico",
+      'NY'=>"New York",
+      'NC'=>"North Carolina",
+      'ND'=>"North Dakota",
+      'OH'=>"Ohio",  
+      'OK'=>"Oklahoma",  
+      'OR'=>"Oregon",  
+      'PA'=>"Pennsylvania",  
+      'RI'=>"Rhode Island",  
+      'SC'=>"South Carolina",  
+      'SD'=>"South Dakota",
+      'TN'=>"Tennessee",  
+      'TX'=>"Texas",  
+      'UT'=>"Utah",  
+      'VT'=>"Vermont",  
+      'VA'=>"Virginia",  
+      'WA'=>"Washington",  
+      'WV'=>"West Virginia",  
+      'WI'=>"Wisconsin",  
+      'WY'=>"Wyoming");
+
+  print drupal_json_encode( $states );
+
+  exit;
+}
 
 function site_address_form() {
   $form = array();
@@ -48,6 +113,7 @@ function site_address_form() {
     '#type' => 'textfield', 
     '#title' => t('State'), 
     '#default_value' => variable_get('site_address_state', ''),
+    '#autocomplete_path' => SITE_ADDRESS_PATH . 'ajax',
     '#required' => TRUE,
   );
 
