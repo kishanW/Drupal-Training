@@ -39,5 +39,6 @@ function site_address_form() {
     '#title' => t('Zip Code'), 
     '#required' => TRUE,
   );
-  return $form;
+
+  return system_settings_form($form);
 }
