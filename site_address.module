@@ -53,3 +53,14 @@ function site_address_block_info() {
   );
   return $blocks;
 }
+
+function site_address_block_view($delta = '') {
+  $block = array();
+  switch( $delta ) {
+    case 'site_address':
+      $block['subject'] = t('Site Address');
+      $block['content'] = '<address></address>';
+      break;
+  }
+  return $block;
+}
