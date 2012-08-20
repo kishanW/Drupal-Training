@@ -1,0 +1,3 @@
+name = Site Address
+description = Stores physical address information
+core = 7.x
