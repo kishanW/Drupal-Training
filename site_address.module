@@ -8,10 +8,23 @@ function site_address_menu() {
     'title' => 'Site Address', 
     'page callback' => 'drupal_get_form',
     'page arguments' => array('site_address_form'),
-    'access arguments' => array('access content')
+    'access arguments' => array('edit site address')
   );
   return $items;
 }
+
+/**
+* Permissions
+*/
+function site_address_permission() {
+  return array(
+    'edit site address' => array(
+      'title' => t('Edit Site Address'), 
+      'description' => t('Allows to edit the site address.'),
+    ),
+  );
+}
+
 
 function site_address_form() {
   $form = array();
