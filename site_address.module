@@ -16,12 +16,13 @@ function site_address_menu() {
 function site_address_form() {
   $form = array();
 
-  $form['street'] = array(
+  $form['site_address_street'] = array(
     '#type' => 'textfield', 
     '#title' => t('Street'), 
+    '#default_value' => variable_get('site_address_street', ''),
     '#required' => TRUE,
   );
-  $form['city'] = array(
+  $form['site_address_city'] = array(
     '#type' => 'textfield', 
     '#title' => t('City'), 
     '#required' => TRUE,
@@ -29,24 +30,16 @@ function site_address_form() {
   /**
   * The State field
   */
-  $form['state'] = array(
+  $form['site_address_state'] = array(
     '#type' => 'textfield', 
     '#title' => t('State'), 
     '#required' => TRUE,
   );
 
-  $form['zip'] = array(
+  $form['site_address_zip'] = array(
     '#type' => 'textfield', 
     '#title' => t('Zip Code'), 
     '#required' => TRUE,
-  );
-
-  /**
-  * Submit button
-  */
-  $form['submit'] = array(
-    '#type' => 'submit',
-    '#value' => 'Submit',
   );
 
   return system_settings_form($form);
